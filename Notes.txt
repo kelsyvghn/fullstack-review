@@ -1,0 +1,21 @@
+Github Fetcher
+
+Database Setup
+  install DB
+    x- install mongo
+    x- run mongo
+  install webpack & setup server
+    x- install webpack
+    x- start webpack
+    x- install nodemon
+    x- start server
+
+  x server runs
+  x website up
+
+3 things each session:
+1- run server
+2- run Database
+3- run react dev
+
+Draw out schema/ diagrams
