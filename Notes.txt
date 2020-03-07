@@ -13,9 +13,30 @@ Database Setup
   x server runs
   x website up
 
-3 things each session:
+* 3 things each session:
 1- run server
 2- run Database
 3- run react dev
 
 Draw out schema/ diagrams
+  x- draw schema
+  x- draw out diagrams
+
+Setup Website
+  - add ajax post request to App
+  - to request the github username's repos to send to /repos
+
+  - complete the getReposByUsernam function in helpers to request repos
+  - complete the save function in the database/index file to save repos to the database
+  * insure there are not duplicate repos
+
+  - complete the post /repos endpoint on the express server using the getReposByUsername and save to get repos and save them to the database
+
+  - add a get /repos endpoint that gets the top 25 repos based on ranking criteria
+
+  - refactor client so that when the page reloads the top 25 are displayed
+  - make each repo link to it's github page
+
+  - After entering a GitHub handle in the form, update the page with the latest top 25 without requiring a page refresh
+  - Complete Getting Started with NodeJS on Heroku  .
+  -
