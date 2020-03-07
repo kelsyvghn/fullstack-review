@@ -23,6 +23,7 @@ Draw out schema/ diagrams
   x- draw out diagrams
 
 Setup Website
+  x- get search and onSearch to function
   - add ajax post request to App
   - to request the github username's repos to send to /repos
 

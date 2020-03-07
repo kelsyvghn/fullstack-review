@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
+import { ajax } from 'jquery';
 import Search from './components/Search.jsx';
 import RepoList from './components/RepoList.jsx';
 
@@ -12,21 +12,19 @@ class App extends React.Component {
     }
   }
 
-  updateRepos () {
-    // ajax({
-    //   type: 'post',
-    //   url: `github.com/users/${this.search.term}`,
-    //   data: 'json',
-    //   success: repos () => {
-    //     console.log(this.state.repos);
-    //   },
-    //   e: console.log(e),
-    // })
+  addRepos (term) {
+    ajax({
+      type: 'post',
+      url: 'https://api.github.com',
+      data: { term },
+      success: console.log('well, it went through post!'),
+      error: e => console.log(e),
+    })
   }
 
   search (term) {
     console.log(`${term} was searched`);
-
+    this.addRepos( term );
     // TODO
   }
 
@@ -34,7 +32,7 @@ class App extends React.Component {
     return (<div>
       <h1>Github Fetcher</h1>
       <RepoList repos={this.state.repos}/>
-      <Search onSearch={this.search.bind(this)}/>
+      <Search search={this.search.bind(this)}/>
     </div>)
   }
 }
