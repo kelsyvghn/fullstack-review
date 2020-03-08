@@ -45,13 +45,14 @@ let save = (repos, callback) => {
     if (err)  {
       return console.log(err);
     } else  {
-      console.log('complete!');
+      callback('complete!');
     }
   })
 
 }
 let data = require('../data.json');
-console.log(save(data));
+
+console.log(save(data, function() {console.log('complete')} ));
 
 //save some repos to the database and then console log "complete!"
 
