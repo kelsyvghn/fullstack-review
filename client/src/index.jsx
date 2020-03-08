@@ -15,9 +15,9 @@ class App extends React.Component {
   addRepos (term) {
     ajax({
       type: 'post',
-      url: 'https://api.github.com',
+      url: 'http://localhost:1128/repos',
       data: { term },
-      success: console.log('well, it went through post!'),
+      success: term => this.setState({ term }),
       error: e => console.log(e),
     })
   }

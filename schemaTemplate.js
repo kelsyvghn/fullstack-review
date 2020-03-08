@@ -1,18 +1,18 @@
-let gitHubRepos = [
+const gitHubRepos = [
   {
-    id: Number,
-    name: String,
-    full_name: String,
-    owner: {
-      login: String,
-      id: Number,
-      avatar_url: String,
-      gravatar_id: String,
-      url: String,
-      html_url: String,
-      followers_url: String,
-      following_url: String,
-      gists_url: String,
+    "id": 18221276,
+    "name": "git-consortium",
+    "full_name": "octocat/git-consortium",
+    "owner": {
+      "login": "octocat",
+      "id": 583231,
+      "avatar_url": "https://avatars0.githubusercontent.com/u/583231?v=3",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/octocat",
+      "html_url": "https://github.com/octocat",
+      "followers_url": "https://api.github.com/users/octocat/followers",
+      "following_url": "https://api.github.com/users/octocat/following{/other_user}",
+      "gists_url": "https://api.github.com/users/octocat/gists{/gist_id}",
       "starred_url": "https://api.github.com/users/octocat/starred{/owner}{/repo}",
       "subscriptions_url": "https://api.github.com/users/octocat/subscriptions",
       "organizations_url": "https://api.github.com/users/octocat/orgs",
@@ -22,11 +22,11 @@ let gitHubRepos = [
       "type": "User",
       "site_admin": false
     },
-    private: Boolean,
-    html_url: String,
-    description: String,
-    fork: Boolean,
-    url: String,
+    "private": false,
+    "html_url": "https://github.com/octocat/git-consortium",
+    "description": "This repo is for demonstration purposes only.",
+    "fork": false,
+    "url": "https://api.github.com/repos/octocat/git-consortium",
     "forks_url": "https://api.github.com/repos/octocat/git-consortium/forks",
     "keys_url": "https://api.github.com/repos/octocat/git-consortium/keys{/key_id}",
     "collaborators_url": "https://api.github.com/repos/octocat/git-consortium/collaborators{/collaborator}",
@@ -618,12 +618,16 @@ let gitHubRepos = [
 ]
 
 const repoData = (array) => {
-  const userRepos = {};
-  for (var object in array) {
-    userRepos.login = array[object]['owner'].login;
-    userRepos.id = array[object]['owner'].id;
-    userRepos.repoURL = array[object]['owner'].repos_url;
-    userRepos.count = array[object]["stargazers_count"]
+  const userRepo = {}; //object for individual repo
+  const userRepos = []; // array for all user repos
+  for (var i = 0; i < array.length; i++) {
+    for (var key in array[i]) {
+      userRepo.id = array[i]['owner']['id'];
+      userRepo.login = array[i]['owner']['login']
+      userRepo.url = array[i]['url'];
+      userRepo.stargazers_count = array[i]["stargazers_count"];
+    }
+    userRepos.push(userRepo);
   }
   return userRepos;
 }
