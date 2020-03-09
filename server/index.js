@@ -1,6 +1,8 @@
 const express = require('express');
 let app = express();
-let getReposByUsername = require('../helpers/github.js');
+const getReposByUsername = require('../helpers/github.js');
+// const Promise = require('bluebird');
+const save = require('../database/index.js');
 
 
 app.use(express.static(__dirname + '/../client/dist'));
@@ -10,11 +12,14 @@ app.use(express.json());
 app.post('/repos', function (req, res) {
   // console.log(req.body)
   let username = req.body.term;
+  // let aPromise = new Promise((resolve, reject)=> {
+    let newRepos = getReposByUsername(username); //logging as not a function. why???
+    // This route should take the github username provided
+    // and get the repo information from the github API, then
+    // return newRepos;
+ callback(save(newRepos))
   // console.log(username)
 
-  // This route should take the github username provided
-  getReposByUsername(username)
-  // and get the repo information from the github API, then
   // save the repo information in the database
 });
 

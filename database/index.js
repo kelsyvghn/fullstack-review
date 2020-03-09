@@ -18,13 +18,17 @@ const repoData = (array) => {
   let userRepos = []; // array for all user repos
   for (var i = 0; i < array.length; i++) {
     for (var key in array[i]) {
-      userRepo.id = array[i]['owner']['id'];
-      userRepo.login = array[i]['owner']['login']
-      userRepo.url = array[i]['url'];
-      userRepo.stargazers_count = array[i]["stargazers_count"];
+      if (userRepo.id !== array[i]['owner']['id']) {
+
+        userRepo.id = array[i]['owner']['id'];
+        userRepo.login = array[i]['owner']['login']
+        userRepo.url = array[i]['url'];
+        userRepo.stargazers_count = array[i]["stargazers_count"];
+      }
     }
     userRepos.push(userRepo);
   }
+
   return userRepos;
 };
 
@@ -52,12 +56,8 @@ let save = (repos, callback) => {
 }
 let data = require('../data.json');
 
-console.log(save(data, function() {console.log('complete')} ));
+console.log(save(data, function() {console.log('complete!')} ));
 
 //save some repos to the database and then console log "complete!"
-
-// // getting-started.js
-// var mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
 
 module.exports.save = save;
